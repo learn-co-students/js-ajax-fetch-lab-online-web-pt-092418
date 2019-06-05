@@ -55,10 +55,10 @@ function getIssues(username) {
   //once an issue is submitted, fetch all open issues to see the issues you are creating
 }
 
-function displayIssues(issuesArray) {
+function displayIssues(array) {
   let div = document.getElementById('issues');
-    for (i = 0; i <issuesArray.length; i++) {
-      $(div).append("<p>" + issuesArray[i].title + "</p>")
+    for (i = 0; i <array.length; i++) {
+      $(div).append("<p>" + array[i].title + "</p>")
     }
 }
 
