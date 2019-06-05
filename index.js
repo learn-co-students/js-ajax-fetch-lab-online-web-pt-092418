@@ -1,5 +1,5 @@
 function getToken() {
-  const token = "336691c5252c1e07e07d8cd38ac2ca24f6fd83ad";
+  const token = "bf1c4820198e027df7233734f365c0a3020eecc2";
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
   return '';
@@ -25,7 +25,8 @@ function showResults(json) {
 }
 
 function createIssue() {
-  let repo = 'kjgmez/js-ajax-fetch-lab';
+  let user = 'kjgmez';
+  let repo = `${user}/js-ajax-fetch-lab`;
   let title = document.getElementById('title').value;
   let text = document.getElementById('body').value;
   const postData = {
@@ -43,10 +44,9 @@ function createIssue() {
   //use this function to create an issue based on the values input in index.html
 }
 
-function getIssues(username) {
-  let repo = `${username}/js-ajax-fetch-lab`;
+function getIssues(el) {
+  let repo = `${el}/js-ajax-fetch-lab`;
   fetch(`https://api.github.com/repos/${repo}/issues`, {
-    method: 'POST',
     headers: {
       Authorization: `token ${getToken()}`
     }
@@ -57,8 +57,8 @@ function getIssues(username) {
 
 function displayIssues(array) {
   let div = document.getElementById('issues');
-    for (i = 0; i <array.length; i++) {
-      $(div).append("<p>" + array[i].title + "</p>")
+    for (let i = 0; i <array.length; i++) {
+     $(div).append("<p>" + array[i].title + "</p>")
     }
 }
 
