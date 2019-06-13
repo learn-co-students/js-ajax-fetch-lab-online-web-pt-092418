@@ -1,14 +1,14 @@
-const baseURL = 'https://api.github.com';
-const repo = 'js-ajax-fetch-lab'
+const baseURL = "https://api.github.com";
+const repo = "js-ajax-fetch-lab"
 
 function getToken() {
-  const token = '5aeb1213a3cfc963cdec131a0027cce9d2fdc0ca';
+  const token = "5aeb1213a3cfc963cdec131a0027cce9d2fdc0ca";
 
-  return token;
+  return '';
 }
 
 function forkRepo() {
-  const user = 'learn-co-curriculum';
+  const user = "learn-co-curriculum";
 
   fetch(`${baseURL}/repos/${user}/${repo}/forks`,
     {
@@ -19,12 +19,11 @@ function forkRepo() {
   })
     .then(res => res.json())
 
-    .then(json => showResults(json.html_url));
+    .then(json => showResults(json));
 }
 
-function showResults(url) {
-  document.getElementById('results').innerHTML = `<a href=${url}>
-    repoLink</a>`;
+function showResults(json) {
+   JSON.stringify(json)
 }
 
 function createIssue() {
@@ -49,10 +48,10 @@ function createIssue() {
     .then(json => getIssues(user))
 }
 
-function getIssues(username) {
+function getIssues(user) {
   const issuesDiv = document.getElementById('issues')
 
-  fetch(`${baseURL}/repos/${username}/${repo}/issues`,{
+  fetch(`${baseURL}/repos/${user}/${repo}/issues`,{
     headers: {
       Authorization: `token ${getToken()}`
     }
